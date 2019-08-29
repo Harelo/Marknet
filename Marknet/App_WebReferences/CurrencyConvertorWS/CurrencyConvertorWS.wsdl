@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://marknet.com/webservices/currencyconvertor" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://marknet.com/webservices/currencyconvertor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://marknet.com/webservices/currencyconvertor">
+      <s:element name="GetConversionRate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="currency" type="tns:Currency" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Currency">
+        <s:restriction base="s:string">
+          <s:enumeration value="USD" />
+          <s:enumeration value="EUR" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetConversionRateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetConversionRateResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetConversionRateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConversionRate" />
+  </wsdl:message>
+  <wsdl:message name="GetConversionRateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConversionRateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CurrencyConvertorWSSoap">
+    <wsdl:operation name="GetConversionRate">
+      <wsdl:input message="tns:GetConversionRateSoapIn" />
+      <wsdl:output message="tns:GetConversionRateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CurrencyConvertorWSSoap" type="tns:CurrencyConvertorWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetConversionRate">
+      <soap:operation soapAction="http://marknet.com/webservices/currencyconvertor/GetConversionRate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurrencyConvertorWSSoap12" type="tns:CurrencyConvertorWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetConversionRate">
+      <soap12:operation soapAction="http://marknet.com/webservices/currencyconvertor/GetConversionRate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CurrencyConvertorWS">
+    <wsdl:port name="CurrencyConvertorWSSoap" binding="tns:CurrencyConvertorWSSoap">
+      <soap:address location="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CurrencyConvertorWSSoap12" binding="tns:CurrencyConvertorWSSoap12">
+      <soap12:address location="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

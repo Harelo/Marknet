@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="GeneralMaster.master.cs"
+    Inherits="Users_GeneralMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link href="../MasterPageStyle.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body dir="rtl">
+    <form id="form1" runat="server">
+    <div style="direction: ltr">
+        <asp:Label ID="loggedUser" runat="server"></asp:Label>
+        <br />
+        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="AccountOverview.aspx"
+            Visible="False">עדכן פרטי משתמש</asp:HyperLink>
+        <br />
+        <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Admins/AdminsHome.aspx"
+            Visible="False">תפריט מנהל</asp:HyperLink>
+        <br />
+        <center>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Masterpage/siteLogo.png"
+                Width="325px" Height="114px" />
+            <br />
+            <asp:Button CssClass="panelButtons" ID="login" runat="server" Text="כניסת משתמש"
+                OnClick="login_Click" />
+            <asp:Button CssClass="panelButtons" ID="comments" runat="server" Text="תגובות" OnClick="comments_Click" />
+            <asp:Button CssClass="panelButtons" ID="basket" runat="server" Text="הסל שלי" OnClick="basket_Click" />
+            <asp:Button CssClass="panelButtons" ID="shop" runat="server" Text="חנות" OnClick="shop_Click" />
+            <asp:Button CssClass="panelButtons" ID="home" runat="server" Text="דף הבית" OnClick="home_Click" />
+            <br />
+            <br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

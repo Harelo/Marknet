@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx?wsdl" docRef="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx" xmlns:q1="http://marknet.com/webservices/currencyconvertor" binding="q1:CurrencyConvertorWSSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:9502/CurrencyConvertorWS/CurrencyConvertorWS.asmx" xmlns:q2="http://marknet.com/webservices/currencyconvertor" binding="q2:CurrencyConvertorWSSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
